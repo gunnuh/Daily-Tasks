@@ -1,0 +1,30 @@
+<template>
+    <lightning-card title="USD Currency Exchange Rates">
+
+        <lightning-datatable
+            key-field="id"
+            data={pagedData}
+            columns={columns}
+            hide-checkbox-column>
+        </lightning-datatable>
+
+        <div class="slds-m-top_medium slds-align_absolute-center">
+            <lightning-button 
+                label="Previous" 
+                onclick={handlePrevious}
+                disabled={disablePrevious}>
+            </lightning-button>
+
+            <span class="slds-m-horizontal_small">
+                Page {pageNumber} of {totalPages}
+            </span>
+
+            <lightning-button 
+                label="Next" 
+                onclick={handleNext}
+                disabled={disableNext}>
+            </lightning-button>
+        </div>
+
+    </lightning-card>
+</template>

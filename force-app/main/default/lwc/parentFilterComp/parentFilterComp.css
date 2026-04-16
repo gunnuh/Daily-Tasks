@@ -1,0 +1,46 @@
+.container{
+    display: flex;
+    height: calc(100vh - 60px);
+}
+.left {
+    width: 300px;
+    overflow-y: auto;
+    border-right: 1px solid #dddbda;
+}
+
+.search-bar {
+    margin-bottom: 10px;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.right.full {
+    width: 100%;
+}
+.header{
+    display: flex;
+    align-items: center;
+}
+.navbar{
+    margin-left: 10px;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 0;
+}
+
+c-righttable {
+    flex: 1;
+    overflow: hidden;
+    display: block;
+}

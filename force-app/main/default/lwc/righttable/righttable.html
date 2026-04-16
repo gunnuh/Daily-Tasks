@@ -1,0 +1,64 @@
+<template>
+    <div class="custom-table">
+        <div class="table-header">
+            <div class="col col-account">Account Name</div>
+            <div class="col col-name">Opportunity Name</div>
+            <div class="col col-stage">Stage</div>
+            <div class="col col-amount">Amount</div>
+        </div>
+
+        <template for:each={tableData} for:item="row">
+            <div key={row.Id} class="table-row">
+
+                <!-- Account Name Cell -->
+                <div class="col col-account">
+                    <template if:false={row.isEditing}>
+                        <span>{row.AccountName}</span>
+                        <button class="pencil-btn" data-id={row.Id} onclick={handleEditClick}>✏️</button>
+                    </template>
+                    <template if:true={row.isEditing}>
+                        <lightning-combobox
+                            value={row.pendingAccountId}
+                            options={accountOptions}
+                            placeholder="Select Account"
+                            variant="label-hidden"
+                            data-id={row.Id}
+                            onchange={handleAccountChange}>
+                        </lightning-combobox>
+                        <button class="save-btn" data-id={row.Id} onclick={handleAccountSave}>✔</button>
+                        <button class="cancel-btn" data-id={row.Id} data-type="account" onclick={handleCancel}>✕</button>
+                    </template>
+                </div>
+
+                <div class="col col-name">{row.Name}</div>
+                <div class="col col-stage">{row.StageName}</div>
+
+                <!-- Amount Cell -->
+                <div class="col col-amount">
+                    <template if:false={row.isEditingAmount}>
+                        <lightning-formatted-number
+                            value={row.Amount}
+                            format-style="currency"
+                            currency-code="USD">
+                        </lightning-formatted-number>
+                        <button class="pencil-btn" data-id={row.Id} onclick={handleAmountEditClick}>✏️</button>
+                    </template>
+                    <template if:true={row.isEditingAmount}>
+                        <lightning-input
+                            type="number"
+                            value={row.pendingAmount}
+                            data-id={row.Id}
+                            formatter="currency"
+                            step="0.01"
+                            variant="label-hidden"
+                            onchange={handleAmountChange}>
+                        </lightning-input>
+                        <button class="save-btn" data-id={row.Id} onclick={handleAmountSave}>✔</button>
+                        <button class="cancel-btn" data-id={row.Id} data-type="amount" onclick={handleCancel}>✕</button>
+                    </template>
+                </div>
+
+            </div>
+        </template>
+    </div>
+</template>

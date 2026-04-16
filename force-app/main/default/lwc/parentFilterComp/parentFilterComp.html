@@ -1,0 +1,31 @@
+<template>
+    <div class="header">
+        <c-navbar filters={filter} onremovefilter={handleRemoveFilter}>
+        </c-navbar>
+        <lightning-button-icon icon-name="utility:rows" onclick={toggleSidebar}> </lightning-button-icon>
+    </div>
+    <div class="container">
+        <template if:true={showLeft}>
+            <div class="left">
+                <c-leftfilter onaddfilter={handleAddFilter} onremoveallfilters={handleRemoveAll} onchangefilter={handleFilter}></c-leftfilter>
+            </div>
+        </template>
+        <div class={rightClass}>
+            <div class="search-bar">
+                <lightning-input
+                    type="search"
+                    label=""
+                    placeholder="Search by Account Name or Stage"
+                    value={searchTerm}
+                    onchange={handleSearch}>
+                </lightning-input>
+            </div>
+            <c-righttable opportunities={opportunities}></c-righttable>
+            <div class="pagination">
+                <lightning-button label="Previous" onclick={handlePrevious} disabled={isFirstPage}> </lightning-button>
+                <span class="page-info">Page {pageNumber} of {totalPages}</span>
+                <lightning-button label="Next" onclick={handleNext} disabled={isLastPage}> </lightning-button>
+            </div>
+        </div>
+    </div>
+</template>

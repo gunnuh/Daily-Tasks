@@ -1,0 +1,12 @@
+<template>
+    <div class="navbar">
+        <template for:each={filtersWithLabels} for:item="filterObj">
+            <lightning-pill
+                key={filterObj.key}
+                label={filterObj.label}
+                data-key={filterObj.key}
+                onremove={removeFilter}>
+            </lightning-pill>
+        </template>
+    </div>
+</template>

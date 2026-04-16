@@ -1,0 +1,51 @@
+<template>
+    <div class={dynamicGridClass}>
+       
+        <div class={dynamicColumnClass}>
+            <lightning-card title="Account Info Demo">
+                <div class="slds-var-p-horizontal_medium">
+                    <template for:each={accounts} for:item="acc">
+                        <div key={acc.Id} class="slds-grid slds-grid_vertical-align-center slds-border_bottom slds-var-p-vertical_x-small">
+                           
+                            <div class="slds-col">
+                                <div class="slds-truncate" title={acc.Name}>
+                                    <strong>{acc.Name}</strong>
+                                </div>
+                                
+                            </div>
+ 
+                            <div class="slds-col slds-no-flex">
+                                <lightning-button-icon
+                                    icon-name={acc.iconName}
+                                    variant={acc.btnVariant}
+                                    alternative-text="Toggle"
+                                    data-id={acc.Id}
+                                    onclick={handleClick}>
+                                </lightning-button-icon>
+                            </div>
+ 
+                        </div>
+                    </template>
+                </div>
+            </lightning-card>
+        </div>
+ 
+        <template if:true={showOpportunities}>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12">
+                <lightning-card title="Related Opportunities">
+                    <div class="slds-var-p-around_small">
+                        <lightning-datatable
+                            key-field="Id"
+                            data={opportunity}
+                            columns={columns2}
+                            draft-values={draftValues}
+                            onsave={handleSave}
+                            hide-checkbox-column>
+                        </lightning-datatable>
+                    </div>
+                </lightning-card>
+            </div>
+        </template>
+    </div>
+</template>
+ 

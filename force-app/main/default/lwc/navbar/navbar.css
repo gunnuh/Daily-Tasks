@@ -1,0 +1,10 @@
+.filter-tile {
+    background: #f3f3f3;
+    padding: 6px 10px;
+    border-radius: 15px;
+    margin-right: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}

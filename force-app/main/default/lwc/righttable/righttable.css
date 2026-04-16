@@ -1,0 +1,60 @@
+.custom-table {
+    border: 1px solid #dddbda;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+}
+
+.table-header {
+    display: flex;
+    background: #f3f2f2;
+    border-bottom: 2px solid #dddbda;
+    padding: 10px 12px;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #3e3e3c;
+    letter-spacing: 0.5px;
+}
+
+.table-row {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 1px solid #f3f2f2;
+    min-height: 44px;
+}
+
+.table-row:hover {
+    background: #f3f2f2;
+}
+
+.table-row:hover .pencil-btn {
+    visibility: visible;
+}
+
+.col { flex: 1; padding: 0 8px; }
+.col-account { flex: 1.5; display: flex; align-items: center; gap: 6px; }
+.col-name    { flex: 2; }
+.col-stage   { flex: 1; }
+.col-amount  { flex: 1; text-align: right; }
+
+.pencil-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    visibility: hidden;
+    font-size: 12px;
+    padding: 2px 4px;
+}
+
+.cancel-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #706e6b;
+    font-size: 14px;
+    padding: 2px 6px;
+}
+
+.cancel-btn:hover { color: #c23934; }

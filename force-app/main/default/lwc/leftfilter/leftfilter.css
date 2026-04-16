@@ -1,0 +1,29 @@
+.filter-summary-box {
+    border: 1px solid #e0c97f;
+    border-radius: 8px;
+    background-color: #fef4d4;
+    padding: 12px 16px;
+    margin-top: 12px;
+}
+
+.matching-text {
+    font-size: 12px;
+    color: #3e3e3c;
+    margin-bottom: 10px;
+}
+
+.filter-chip {
+    display: flex;
+    gap: 6px;
+    font-size: 13px;
+    padding: 6px 0;
+    border-bottom: 1px solid #e0c97f;
+}
+
+.filter-chip:last-child {
+    border-bottom: none;
+}
+
+.chip-field  { font-weight: 700; }
+.chip-operator { color: #706e6b; }
+.chip-value  { font-weight: 600; }

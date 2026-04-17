@@ -1,12 +1,15 @@
 import { LightningElement, wire, api, track } from 'lwc';
 import { getRelatedListRecords } from 'lightning/uiRelatedListApi';
 import relationshipModal from 'c/relationshipModal';
+import { refreshApex } from '@salesforce/apex';
+
 
 export default class ContactUserMatrix extends LightningElement {
     @api recordId;
     @track users = [];
     @track matrixRows = [];
     records = [];
+    wiredResult;
 
     @wire(getRelatedListRecords, {
         parentRecordId: '$recordId',
@@ -20,12 +23,13 @@ export default class ContactUserMatrix extends LightningElement {
             'Relationship_Matrix__c.Id'
         ]
     })
-    wiredData({ data, error }) {
-        if (data) {
-            this.records = data.records;
+    wiredData(result) {
+        this.wiredResult = result;
+        if (result.data) {
+            this.records = result.data.records;
             this.matrix();
-        } else if (error) {
-            console.error(error);
+        } else if (result.error) {
+            console.error(result.error);
         }
     }
 
@@ -42,15 +46,19 @@ export default class ContactUserMatrix extends LightningElement {
             if(!cId) return;
 
             contacts[cId] = { id: cId, name: cName };
+            console.log('contacts',JSON.stringify(contacts));
+            
             //users[uId] = { id: uId, name: uName };
             if(uId){
                 users[uId] = {id: uId, name:uName};
+                 console.log('users',JSON.stringify(users));
                 if(!matrix[cId]) matrix[cId]={};
                 matrix[cId][uId] = {
                     img: rec.fields.Health_Index__c.value,
                     id: rec.fields.Id.value
                 };
             }
+             console.log('matrix',JSON.stringify(matrix));
 
             /*if (!matrix[cId]) matrix[cId] = {};
             matrix[cId][uId] = {
@@ -79,7 +87,13 @@ export default class ContactUserMatrix extends LightningElement {
             size: 'small',
             recordId: recId
         });
+        if(result == 'Saved'){
+            this.refreshMatrix();
+        }
         console.log('Modal closed with:', result);
+    }
+    refreshMatrix(){
+        refreshApex(this.wiredResult);
     }
 
 }

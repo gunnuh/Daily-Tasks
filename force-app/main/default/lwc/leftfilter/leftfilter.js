@@ -39,7 +39,7 @@ export default class Leftfilter extends LightningElement {
         const index = Number(event.target.dataset.index);
         const name = event.target.name;
         const value = event.target.value;
-        // ✅ map se naya array banao — direct mutation nahi
+      
         this.filters = this.filters.map((f, i) =>
             i === index ? { ...f, [name]: value } : f
         );
@@ -47,7 +47,7 @@ export default class Leftfilter extends LightningElement {
 
     handleRemove(event) {
         const index = Number(event.target.dataset.index);
-        // ✅ filter se naya array banao — splice nahi
+        
         this.filters = this.filters.filter((_, i) => i !== index);
         this.handleApply();
     }

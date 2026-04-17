@@ -1,0 +1,16 @@
+<template>
+    <lightning-modal-header label="Relationship Matrix Modal"></lightning-modal-header>
+    <lightning-modal-body>
+        <lightning-record-edit-form object-api-name="Relationship_Matrix__c" record-id={recordId} onsuccess={handleSuccess}>
+            <lightning-input-field field-name="AccountName__c"></lightning-input-field>
+            <lightning-input-field field-name="ContactName__c"></lightning-input-field>
+            <lightning-input-field field-name="UserName__c"></lightning-input-field>
+            <lightning-input-field field-name="Health__c"></lightning-input-field>
+
+        </lightning-record-edit-form>
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <lightning-button variant="brand" label="Save" onclick={handleSave}></lightning-button>
+        <lightning-button label="Cancel" onclick={handleCancel}></lightning-button>
+    </lightning-modal-footer>
+</template>

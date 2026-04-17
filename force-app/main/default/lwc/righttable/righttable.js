@@ -95,7 +95,6 @@ export default class Righttable extends LightningElement {
         }
     }
 
-    // sirf pending value store karo — save nahi karo abhi
     handleAccountChange(event) {
         try {
             const newAccountId = event.detail.value;
@@ -111,7 +110,6 @@ export default class Righttable extends LightningElement {
         }
     }
 
-    // sirf pending value store karo — save nahi karo abhi
     handleAmountChange(event) {
         try {
             const newAmount = parseFloat(event.detail.value);

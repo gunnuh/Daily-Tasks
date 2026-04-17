@@ -1,0 +1,36 @@
+<template>
+    <div class="slds-scrollable_x">
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+            <thead>
+                <tr>
+                    <th>Contact / User</th>
+                    <template for:each={users} for:item="u">
+                        <th key={u.id}>{u.name}</th>
+                    </template>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={matrixRows} for:item="row">
+                    <tr key={row.id}>
+                        <td><b>{row.name}</b></td>
+                        <template for:each={row.cells} for:item="cell">
+                            <td key={cell.key} class="img-cell">
+                                <template if:true={cell.entry}>
+                                    <div
+                                        data-recid={cell.entry.id}
+                                        class="img-wrap"
+                                        onclick={handleClick}>
+                                        <lightning-formatted-rich-text
+                                            value={cell.entry.img}>
+                                        </lightning-formatted-rich-text>
+                                    </div>
+                                </template>
+                                <template if:false={cell.entry}>—</template>
+                            </td>
+                        </template>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+</template>

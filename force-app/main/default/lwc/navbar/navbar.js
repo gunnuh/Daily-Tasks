@@ -9,7 +9,6 @@ export default class Navbar extends LightningElement {
         amountGreater10k: 'Amount > 10k'
     };
 
-    // Prepare filters with labels for template
     get filtersWithLabels() {
         return this.filters.map(f => ({
             key: f,
